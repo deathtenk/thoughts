@@ -1,0 +1,4 @@
+%{"espec": {:hex, :espec, "1.1.1", "ed3b3ec3e909183841245a4649fe31d80a101e93cbff473f156715f3f0946625", [:mix], [{:meck, "~> 0.8.4", [hex: :meck, optional: false]}]},
+  "meck": {:hex, :meck, "0.8.4", "59ca1cd971372aa223138efcf9b29475bde299e1953046a0c727184790ab1520", [:rebar, :make], []},
+  "oauth": {:git, "https://github.com/tim/erlang-oauth.git", "fca8163e8f7af867015e2413c4b03a4f8f4df0c9", []},
+  "poison": {:hex, :poison, "3.0.0", "625ebd64d33ae2e65201c2c14d6c85c27cc8b68f2d0dd37828fde9c6920dd131", [:mix], []}}
