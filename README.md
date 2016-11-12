@@ -23,12 +23,12 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
     end
     ```
 
-# Environment Variables Needed
+## Environment Variables Needed
 
-  TWITTER_CONSUMER_KEY
-  TWITTER_CONSUMER_SECRET
-  TWITTER_ACCESS_TOKEN
-  TWITTER_ACCESS_SECRET  
+  1. TWITTER_CONSUMER_KEY
+  2. TWITTER_CONSUMER_SECRET
+  3. TWITTER_ACCESS_TOKEN
+  4. TWITTER_ACCESS_SECRET  
 
 ## Usage
 
