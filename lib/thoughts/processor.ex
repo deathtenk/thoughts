@@ -1,28 +1,25 @@
-defmodule Thoughts.Processor do
+defmodule Thoughts.Message do
   
-  def message_processor(receiver, aggregate_data \\ []) do
+  def processor(receiver, aggregate_data \\ []) do
     receive do
       {:http, {request_id, :stream, chunk}} ->
         cond do
           _is_empty?(chunk) ->
-            message_processor(receiver, aggregate_data)
+            processor(receiver, aggregate_data)
           _eol?(chunk) ->
-            #try do
-              {:ok, final} = _join_and_parse(chunk,aggregate_data)
-              send(receiver, {:message, final})
-              message_processor(receiver, [])
-              #catch
-                # {:error, {reason,_,_}} = _join_and_parse(chunk,aggregate_data)
-                # IO.puts "parsing issue for #{reason}, emptying message box"
-                #message_processor(receiver, [])
-                #end
+              case _join_and_parse(chunk,aggregate_data) do
+                {:ok, final} ->
+                  send(receiver, {:message, final})
+                  processor(receiver, [])
+                {:error, {reason,_,_}} ->
+                  Thoughts.logger({:info, "parse error due to '#{reason}', emptying list"})
+                  processor(receiver, [])
+              end
           true ->
-            message_processor(receiver, [chunk|aggregate_data])
+            processor(receiver, [chunk|aggregate_data])
         end
-
-      _ ->
-        message_processor(receiver, aggregate_data)
     end
+    processor(receiver, aggregate_data)
   end
 
   @eol "\r\n"
@@ -35,6 +32,4 @@ defmodule Thoughts.Processor do
       Enum.join("") |>
       Poison.Parser.parse
   end
-
-  defp _parse_handler
 end
