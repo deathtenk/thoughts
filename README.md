@@ -42,7 +42,7 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 
   3. from within iex run the following
   
-    ```elixir 
+    ```
        iex(1)> Thoughts.on("Hockey")
 
         22:59:13.511 [info]  finding thoughts on Hockey...
